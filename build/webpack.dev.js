@@ -1,11 +1,7 @@
 const {merge} = require("webpack-merge");
 const webpack = require("webpack");
 const common = require("./webpack.common");
-const path = require("path");
-
-function resolve(dir) {
-    return path.join(__dirname, "..", dir);
-}
+const { resolve } = require('./utils.js')
 
 const devWebpackConfig = merge(common, {
     mode: 'development',// 打包模式-开发模式

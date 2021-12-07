@@ -1,9 +1,5 @@
 // 文件路径处理方法
-const path = require('path');
-
-function resolve(dir) {
-    return path.join(__dirname, '..', dir)
-}
+const { resolve, babelLoaderConf } = require('./utils.js')
 
 // 插件引入
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -34,6 +30,12 @@ module.exports = {
                     loader: 'vue-loader',
                 },
                 include: /(src)/
+            },
+            // ts/js文件loader - babel配置
+            {
+                test: /\.(ts|js)x?$/,
+                use: [babelLoaderConf],
+                exclude: /node_modules/ //排除node_modules中的文件
             },
             // 图片资源加载配置
             {

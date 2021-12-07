@@ -1,11 +1,7 @@
 const {merge} = require("webpack-merge");
 const webpack = require("webpack");
 const common = require("./webpack.common");
-const path = require("path");
-
-function resolve(dir) {
-    return path.join(__dirname, '..', dir)
-}
+const { resolve } = require('./utils.js')
 
 module.exports = function (env, argv) {
     const nodeEnv = env.dev ? "development" : env.test ? "test" : "production";
