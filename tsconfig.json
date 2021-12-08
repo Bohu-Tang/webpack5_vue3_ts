@@ -38,6 +38,9 @@
     ]
     // lib用于指定要包含在编译中的库文件
   },
+  "types": [
+    "webpack-env"
+  ],
   "include": [
     "src/**/*.ts",
     "src/**/*.tsx",

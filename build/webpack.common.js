@@ -40,6 +40,14 @@ module.exports = {
         use: [babelLoaderConf],
         exclude: /node_modules/ //排除node_modules中的文件
       },
+      {
+        test: /\.svg$/,
+        loader: 'svg-sprite-loader',
+        include: [resolve('src/assets/svg')],
+        options: {
+          symbolId: 'icon-[name]',
+        },
+      },
       // 图片资源加载配置
       {
         test: /\.(png|jpg|jpeg|gif|svg)(\?.*)?$/,

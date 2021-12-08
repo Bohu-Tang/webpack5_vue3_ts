@@ -23,6 +23,7 @@ module.exports = function (env, argv) {
   ] : []
   // 判断当前环境
   const nodeEnv = env.dev ? "development" : env.test ? "test" : "production";
+  // webpack打包配置
   return merge(common, {
     mode: "production",
     devtool: "source-map",
@@ -48,6 +49,14 @@ module.exports = function (env, argv) {
         }
       ],
     },
+    performance:{
+      hints: 'warning', // 提示方式：警告
+      maxAssetSize: 3000000, // 最大静态资源大小3M，超出提示
+      maxEntrypointSize:5000000, // 最大入口文件大小5M，超出提示
+      assetFilter: function (assetFilename){ // 需要提示的文件类型
+        return assetFilename.endsWith('.js')
+      }
+    },
     plugins: [
       // css抽离
       new MiniCssExtractPlugin({
@@ -57,7 +66,9 @@ module.exports = function (env, argv) {
       // css压缩
       new CssMinimizerPlugin(),
       new webpack.DefinePlugin({
-        "process.env.NODE_ENV": JSON.stringify(nodeEnv),
+        "process.env":{
+          NODE_ENV: JSON.stringify(nodeEnv)
+        },
         __VUE_OPTIONS_API__: true,
         __VUE_PROD_DEVTOOLS__: false,
       }),
