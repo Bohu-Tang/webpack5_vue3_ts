@@ -2,6 +2,7 @@
 <div class="hello">
   <span>你好</span>
   <img src="./assets/images/welcome.png">
+  <el-button>你好</el-button>
 </div>
   
 </template>

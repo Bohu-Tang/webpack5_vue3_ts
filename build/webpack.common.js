@@ -1,5 +1,8 @@
 // 文件路径处理方法
 const { resolve, babelLoaderConf } = require('./utils.js')
+// Element按需引入配置
+const Components = require('unplugin-vue-components/webpack');
+const { ElementPlusResolver }= require('unplugin-vue-components/resolvers')
 
 // 插件引入
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -66,7 +69,16 @@ module.exports = {
                 generator: {
                     filename: 'media/[base]'
                 }
-            }
+            },
+          //element-plus配置
+          {
+            test: /\.mjs$/,
+            include: /node_modules/,
+            resolve: {
+              fullySpecified: false
+            },
+            type: 'javascript/auto'
+          }
 
         ]
     },
@@ -77,8 +89,17 @@ module.exports = {
             filename: "index.html",
             template: resolve("public/index.html"),
             favicon: resolve("public/favicon.ico"),
-            inject: true
-        })
+            inject: true,
+            clean: true
+        }),
+      // element-plus 按需引入
+      Components({
+        resolvers:[
+          ElementPlusResolver({
+            importStyle: true // 引入style文件，
+          })
+        ]
+      })
     ]
 }
 
