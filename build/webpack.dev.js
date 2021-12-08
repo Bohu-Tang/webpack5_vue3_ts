@@ -55,7 +55,7 @@ const devWebpackConfig = merge(common, {
   stats: "errors-warnings",// 日志只打印错误和警告
   // 开发环境服务器配置
   devServer: {
-    host: "0.0.0.0",
+    host: "127.0.0.1",
     historyApiFallback: {//history模式路由兼容
       rewrites: [
         {
