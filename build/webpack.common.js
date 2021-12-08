@@ -72,7 +72,7 @@ module.exports = {
     },
     // 插件配置
     plugins: [
-        new vueLoader.VueLoaderPlugin(),
+        new vueLoader.VueLoaderPlugin(),// vue-loader插件
         new HtmlWebpackPlugin({
             filename: "index.html",
             template: resolve("public/index.html"),
