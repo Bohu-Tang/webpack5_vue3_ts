@@ -2,9 +2,7 @@ const {merge} = require("webpack-merge");
 const webpack = require("webpack");
 const common = require("./webpack.common");
 const {resolve} = require('./utils.js');
-const chalk = require('chalk')
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
-const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 
 
 const devWebpackConfig = merge(common, {
@@ -99,11 +97,6 @@ const devWebpackConfig = merge(common, {
 })
 
 devWebpackConfig.plugins.push(
-  // 进度条
-  new ProgressBarPlugin({
-    format: `  :msg [:bar] ${chalk.green.bold(':percent')} (:elapsed s)`,
-    clear: true,
-  }),
   // 错误提示
   new FriendlyErrorsWebpackPlugin({
     // 成功的时候输出

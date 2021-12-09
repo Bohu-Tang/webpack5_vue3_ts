@@ -7,6 +7,9 @@ const {ElementPlusResolver} = require('unplugin-vue-components/resolvers')
 // 插件引入
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const vueLoader = require('vue-loader');
+// 进度条插件
+const ProgressBarPlugin = require("progress-bar-webpack-plugin");
+const chalk = require("chalk");
 
 // 打包配置
 module.exports = {
@@ -92,6 +95,11 @@ module.exports = {
   },
   // 插件配置
   plugins: [
+    // 打包进度进度条
+    new ProgressBarPlugin({
+      format: `  :msg [:bar] ${chalk.green.bold(':percent')} (:elapsed s)`,
+      clear: true,
+    }),
     new vueLoader.VueLoaderPlugin(),// vue-loader插件
     new HtmlWebpackPlugin({
       filename: "index.html",
