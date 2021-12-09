@@ -69,7 +69,7 @@ const devWebpackConfig = merge(common, {
     open: false, // 自动打开浏览器
     hot: true, // 是否开启热更新（不配置此项其实也是默认开启的）
     client: {
-      progress: true,// 将运行进度显示到控制台
+      progress: false,// 将运行进度显示到控制台
       overlay: {
         warnings: false,// 警告时不需要全屏显示错误
         errors: true// 发生错误时全屏显示错误

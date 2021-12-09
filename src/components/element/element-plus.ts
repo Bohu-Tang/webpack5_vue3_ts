@@ -1,6 +1,11 @@
 import type {App} from 'vue'
 
 import {
+  ElContainer,
+  ElHeader,
+  ElAside,
+  ElMain,
+  ElFooter,
   ElButton,
   ElSelect,
   ElCollapseTransition,
@@ -46,6 +51,11 @@ import {
 } from 'element-plus'
 
 const components = [
+  ElContainer,
+  ElHeader,
+  ElAside,
+  ElMain,
+  ElFooter,
   ElButton,
   ElSelect,
   ElCollapseTransition,

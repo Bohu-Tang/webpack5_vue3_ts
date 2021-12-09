@@ -1,25 +1,15 @@
 <template>
-<div class="hello">
-  <span>你好</span>
-  <img src="./assets/images/welcome.png">
-  <el-button>你好</el-button>
-</div>
-  
+    <baseLayout></baseLayout>
 </template>
 
 <script>
 import {defineComponent} from "vue";
+import baseLayout from '@/layout/baseLayout.vue'
 
 export default defineComponent({
   name: 'App',
+  components: {
+    baseLayout
+  }
 })
 </script>
-
-<style lang="scss">
-.hello{
-  color: green;
-}
-</style>
-
-
-
