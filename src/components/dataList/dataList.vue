@@ -1,7 +1,7 @@
 <template>
   <div class="data-list">
     列表组件测试
-    <el-table :data="data" :style="{width}" :border="true">
+    <el-table :data="data" :style="{width}" :border="true" v-loading="loading">
       <el-table-column v-for="(col, index) in columns" :key="index" :label="col.label"
                        :width="col.width">
         <template #default="scope">
@@ -40,14 +40,20 @@ export default defineComponent({
     width: {
       type: String,
       default: '100%'
+    },
+    // 列表加载状态
+    loading:{
+      type: Boolean,
+      default: false
     }
   },
   setup(props) {
-    const {data, columns, width} = toRefs(props)
+    const {data, columns, width, loading} = toRefs(props)
     return {
       columns, // 列配置
       data, // 列表数据
       width, // 列表宽度
+      loading, // 列表加载状态
     }
   }
 })

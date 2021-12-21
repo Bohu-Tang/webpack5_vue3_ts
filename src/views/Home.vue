@@ -1,5 +1,5 @@
 <template>
-  <data-list :data="tableData" :columns="columns" width="500px"></data-list>
+  <data-list :data="tableData" :columns="columns" width="500px" :loading="loading"></data-list>
   <el-button @click="addRow">点击加一条数据</el-button>
 </template>
 
@@ -56,16 +56,24 @@ export default defineComponent({
         address: 'No. 189, Grove St, Los Angeles',
       }
     ]
+    let loading = ref(false);
+
     function addRow(){
-      tableData.value.push({
-        date: '2016-05-03',
-        name: 'Tom',
-        address: 'No. 189, Grove St, Los Angeles'
-      })
+      loading.value = true;
+      setTimeout(()=>{
+        tableData.value.push({
+          date: '2016-05-03',
+          name: 'Tom',
+          address: 'No. 189, Grove St, Los Angeles'
+        })
+        loading.value = false;
+      }, 1000)
+
     }
     return {
       columns,
       tableData,
+      loading,
       addRow
     }
   }
