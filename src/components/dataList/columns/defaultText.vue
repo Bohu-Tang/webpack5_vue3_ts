@@ -1,7 +1,7 @@
 <template>
-  <div class="default-text">
+  <span class="default-text">
     {{ scope.row[col.prop]}}
-  </div>
+  </span>
 </template>
 <script>
 import {defineComponent, toRefs} from "vue";

@@ -1,11 +1,23 @@
 <template>
-  <data-list :data="tableData" :columns="columns" width="500px" :loading="loading"></data-list>
+  <data-list
+    :data="tableData"
+    :columns="columns"
+    width="100%"
+    :loading="loading"
+    :show-header="true"
+    height="300px"
+    :border="true"
+    :selection="true"
+    @selectionChange="selectionChanged"
+  />
+
   <el-button @click="addRow">点击加一条数据</el-button>
 </template>
 
 <script>
 import {defineComponent, ref, reactive} from "vue";
 import dataList from "../components/dataList/dataList";
+
 export default defineComponent({
   name: 'home',
   components: {dataList},
@@ -29,7 +41,8 @@ export default defineComponent({
         prop: 'address',
         label: '地址',
         width: 180,
-        type: 'defaultText'
+        type: 'defaultText',
+        showOverflowTooltip: true,
       }
     ]
     // 数据处理部分
@@ -58,9 +71,9 @@ export default defineComponent({
     ]
     let loading = ref(false);
 
-    function addRow(){
+    function addRow() {
       loading.value = true;
-      setTimeout(()=>{
+      setTimeout(() => {
         tableData.value.push({
           date: '2016-05-03',
           name: 'Tom',
@@ -68,13 +81,19 @@ export default defineComponent({
         })
         loading.value = false;
       }, 1000)
-
     }
+    // 多选
+    function selectionChanged(val){
+      console.log(val)
+    }
+
+
     return {
       columns,
       tableData,
       loading,
-      addRow
+      addRow,
+      selectionChanged,
     }
   }
 
