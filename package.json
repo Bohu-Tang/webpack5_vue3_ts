@@ -58,8 +58,9 @@
   },
   "dependencies": {
     "@babel/runtime-corejs3": "^7.16.3",
+    "@element-plus/icons-vue": "^0.2.4",
     "core-js": "^3.19.3",
-    "element-plus": "^1.2.0-beta.5",
+    "element-plus": "^1.2.0-beta.6",
     "skytech-request": "^1.0.8",
     "vue": "^3.2.24",
     "vue-router": "^4.0.12",

@@ -23,7 +23,7 @@ import {
   Document,
   Menu as IconMenu,
   Setting,
-} from '@element-plus/icons'
+} from '@element-plus/icons-vue'
 import {routes} from '@/router';
 
 export default defineComponent({

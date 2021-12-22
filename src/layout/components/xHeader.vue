@@ -16,7 +16,7 @@
 
 <script lang="ts" setup>
 import {defineComponent, computed} from "vue";
-import {Expand, Fold} from "@element-plus/icons";
+import {Expand, Fold} from "@element-plus/icons-vue";
 import {useStore} from "vuex";
 
 const store = useStore();

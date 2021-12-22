@@ -7,6 +7,7 @@
       v-loading="loading"
       v-bind="attrs"
     >
+      <el-table-column v-if="showIndex" type="index" width="50"/>
       <el-table-column v-if="selection" type="selection" width="55"/>
       <el-table-column
         v-for="(col, index) in columns"
@@ -20,6 +21,15 @@
         </template>
       </el-table-column>
     </el-table>
+    <div v-if="showPage" class="pagination" :style="{justifyContent:pagePosition}">
+      <el-pagination
+        v-model:currentPage="currentPage"
+        :page-sizes="[100, 200, 300, 400]"
+        layout="total, prev, pager, next, sizes, jumper"
+        :total="400"
+      >
+      </el-pagination>
+    </div>
   </div>
 </template>
 
@@ -61,13 +71,29 @@ export default defineComponent({
     selection: {
       type: Boolean,
       default: false
+    },
+    // 是否显示索引列
+    showIndex: {
+      type: Boolean,
+      default: false
+    },
+    // 是否显示分页器
+    showPage: {
+      type: Boolean,
+      default: true
+    },
+    // 分页器位置
+    pagePosition: {
+      type: String,
+      default: 'right'
     }
 
   },
   setup(props, context) {
-    const {data, columns, width, loading, selection} = toRefs(props); // 读取组件参数
+    const {data, columns, width, loading, selection, showIndex, pagePosition, showPage} = toRefs(props); // 读取组件参数
     const {attrs} = context; // 读取额外参数
     // const {emit} = context; // 读取方法
+    let currentPage = ref(1)
 
     return {
       attrs, // 额外参数(props中没定义的属性参数)
@@ -76,7 +102,18 @@ export default defineComponent({
       width, // 列表宽度
       loading, // 列表加载状态
       selection, // 是否启用多选功能
+      showIndex, // 是否显示索引列
+      showPage, // 是否显示分页器
+      pagePosition, // 分页器位置
+      currentPage, // 当前页
     }
   }
 })
 </script>
+<style>
+.pagination {
+  display: flex;
+  align-items: center;
+  height: 50px;
+}
+</style>

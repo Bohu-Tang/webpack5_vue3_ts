@@ -48,6 +48,7 @@ import {
   ElUpload,
   ElBreadcrumb,
   ElBreadcrumbItem,
+  ElConfigProvider
 } from 'element-plus'
 
 const components = [
@@ -98,6 +99,7 @@ const components = [
   ElUpload,
   ElBreadcrumb,
   ElBreadcrumbItem,
+  ElConfigProvider
 ]
 
 const option = {

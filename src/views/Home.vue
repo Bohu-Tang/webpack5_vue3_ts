@@ -8,7 +8,10 @@
     height="300px"
     :border="true"
     :selection="true"
+    :show-index="true"
+    :show-page="true"
     @selectionChange="selectionChanged"
+    @select="select"
   />
 
   <el-button @click="addRow">点击加一条数据</el-button>
@@ -45,7 +48,7 @@ export default defineComponent({
         showOverflowTooltip: true,
       }
     ]
-    // 数据处理部分
+    // 列表数据
     let tableData = ref([])
     tableData.value = [
       {
@@ -71,6 +74,7 @@ export default defineComponent({
     ]
     let loading = ref(false);
 
+    // 添加一条数据
     function addRow() {
       loading.value = true;
       setTimeout(() => {
@@ -82,9 +86,17 @@ export default defineComponent({
         loading.value = false;
       }, 1000)
     }
+
     // 多选
-    function selectionChanged(val){
-      console.log(val)
+    let multipleSelection = ref([])
+
+    function selectionChanged(val) {
+      multipleSelection.value = val
+    }
+    // 当用户手动勾选数据行的 Checkbox 时触发的事件
+    function select(selection, row){
+      // selection:已选中的所有数据 row：当前选中行的数据
+      console.log(selection, row)
     }
 
 
@@ -94,6 +106,7 @@ export default defineComponent({
       loading,
       addRow,
       selectionChanged,
+      select
     }
   }
 
