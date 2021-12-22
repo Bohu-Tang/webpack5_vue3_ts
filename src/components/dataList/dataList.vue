@@ -1,5 +1,6 @@
 <template>
   <div class="data-list">
+    <!--    表格-->
     <el-table
       ref="dataList"
       :data="data"
@@ -7,8 +8,11 @@
       v-loading="loading"
       v-bind="attrs"
     >
+      <!--      列索引-->
       <el-table-column v-if="showIndex" type="index" width="50"/>
+      <!--      多选列-->
       <el-table-column v-if="selection" type="selection" width="55"/>
+      <!--      普通列-->
       <el-table-column
         v-for="(col, index) in columns"
         :key="index"
@@ -17,14 +21,17 @@
         :show-overflow-tooltip="col.showOverflowTooltip"
       >
         <template #default="scope">
+          <!--          自定义列组件-->
           <component :is="col.type" :scope="scope" :col="col"></component>
         </template>
       </el-table-column>
     </el-table>
+    <!--    分页器-->
     <div v-if="showPage" class="pagination" :style="{justifyContent:pagePosition}">
       <el-pagination
-        v-model:currentPage="currentPage"
-        :page-sizes="[100, 200, 300, 400]"
+        v-model:currentPage="pageParam.displayStart"
+        v-model:page-size="pageParam.displayLength"
+        :page-sizes="[10, 30, 50, 100]"
         layout="total, prev, pager, next, sizes, jumper"
         :total="400"
       >
@@ -34,7 +41,7 @@
 </template>
 
 <script>
-import {defineComponent, toRefs, ref} from "vue";
+import {defineComponent, toRefs, ref, onUpdated, reactive} from "vue";
 import customColumns from './columns/index';
 
 export default defineComponent({
@@ -92,8 +99,14 @@ export default defineComponent({
   setup(props, context) {
     const {data, columns, width, loading, selection, showIndex, pagePosition, showPage} = toRefs(props); // 读取组件参数
     const {attrs} = context; // 读取额外参数
-    // const {emit} = context; // 读取方法
-    let currentPage = ref(1)
+
+    // 分页信息处理
+    let pageParam = reactive({displayStart: 1, displayLength: 10})
+    onUpdated(() => {
+      console.log('当前页：', pageParam.displayStart)
+      console.log('一页多少条：', pageParam.displayLength)
+    })
+
 
     return {
       attrs, // 额外参数(props中没定义的属性参数)
@@ -105,7 +118,7 @@ export default defineComponent({
       showIndex, // 是否显示索引列
       showPage, // 是否显示分页器
       pagePosition, // 分页器位置
-      currentPage, // 当前页
+      pageParam, // 分页参数
     }
   }
 })

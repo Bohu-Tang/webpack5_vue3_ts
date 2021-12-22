@@ -10,6 +10,7 @@
     :selection="true"
     :show-index="true"
     :show-page="true"
+    page-position="left"
     @selectionChange="selectionChanged"
     @select="select"
   />
