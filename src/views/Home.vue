@@ -31,29 +31,26 @@ export default defineComponent({
   components: {dataList},
   setup() {
     // 筛选面板配置
-    let groups = ref(
-      [
-        {
-          prop: 'name',
-          placeholder: '请输入姓名',
-          componentName: 'x-input',
-          value: '金针菇'
-        },
-        {
-          prop: 'sex',
-          placeholder: '请输入性别',
-          componentName: 'x-input',
-          value: undefined
-        },
-        {
-          prop: 'address',
-          placeholder: '请输入地址',
-          componentName: 'x-input',
-          value: undefined
-        },
-      ]
-    )
-
+    let groups = ref([
+      {
+        prop: 'name',
+        placeholder: '请输入姓名',
+        componentName: 'x-input',
+        value: '金针菇'
+      },
+      {
+        prop: 'sex',
+        placeholder: '请输入性别',
+        componentName: 'x-input',
+        value: undefined
+      },
+      {
+        prop: 'address',
+        placeholder: '请输入地址',
+        componentName: 'x-input',
+        value: undefined
+      },
+    ])
     // 列配置部分
     let columns = ref([
       {
@@ -76,8 +73,7 @@ export default defineComponent({
       }
     ]);
     // 列表数据
-    let tableData = ref([])
-    tableData.value = [
+    let tableData = ref([
       {
         date: '2016-05-03',
         name: 'Tom',
@@ -98,7 +94,7 @@ export default defineComponent({
         name: 'Tom',
         address: 'No. 189, Grove St, Los Angeles',
       }
-    ]
+    ])
     // 列表loading状态
     let loading = ref(false);
 

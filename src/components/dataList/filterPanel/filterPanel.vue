@@ -19,7 +19,7 @@
 </template>
 <script>
 import {defineComponent, reactive, toRefs, onBeforeMount} from "vue";
-import formComponents from "../../formComponents";
+import formComponents from "@/components/formComponents/index";
 
 export default defineComponent({
   name: "filterPanel",

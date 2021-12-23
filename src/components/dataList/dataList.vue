@@ -144,7 +144,15 @@ export default defineComponent({
         filterParam[key] = value[key]
       })
       // 调用查询
-      generateSearchParam();
+      if (pageParam.displayStart === 1) {
+        // 当页码在第一页的时候直接调用查询方法
+        generateSearchParam();
+      } else {
+        // 当页码不在第一页的时候，将页码改为第一页
+        // watch将自动调用查询方法
+        pageParam.displayStart = 1
+      }
+
     }
 
     // 分页信息处理
