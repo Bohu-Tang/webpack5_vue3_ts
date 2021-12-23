@@ -1,7 +1,6 @@
-// @ts-ignore
 import { $http, Post, Get, Put, Patch, Delete, RequestUse } from 'skytech-request';
 
-$http.defaults.validateStatus = function (status:any) {
+$http.defaults.validateStatus = function (status) {
   return status >= 200 && status < 400;
 };
 

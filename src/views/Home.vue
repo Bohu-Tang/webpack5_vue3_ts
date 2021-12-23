@@ -1,11 +1,13 @@
 <template>
   <data-list
-    :data="tableData"
-    :columns="columns"
     width="100%"
+    height="300px"
+    :data="tableData"
+    :filter-groups="groups"
+    :auto-search="false"
+    :columns="columns"
     :loading="loading"
     :show-header="true"
-    height="300px"
     :border="true"
     :selection="true"
     :show-index="true"
@@ -13,22 +15,47 @@
     page-position="left"
     @selectionChange="selectionChanged"
     @select="select"
+    @searchMethod="getData"
   />
 
   <el-button @click="addRow">点击加一条数据</el-button>
 </template>
 
 <script>
-import {defineComponent, ref, reactive} from "vue";
-import dataList from "../components/dataList/dataList";
+import {defineComponent, ref, onMounted, reactive} from "vue";
+import dataList from "@/components/dataList/dataList";
+import apiService from "@/apiService";
 
 export default defineComponent({
   name: 'home',
   components: {dataList},
   setup() {
+    // 筛选面板配置
+    let groups = ref(
+      [
+        {
+          prop: 'name',
+          placeholder: '请输入姓名',
+          componentName: 'x-input',
+          value: '金针菇'
+        },
+        {
+          prop: 'sex',
+          placeholder: '请输入性别',
+          componentName: 'x-input',
+          value: undefined
+        },
+        {
+          prop: 'address',
+          placeholder: '请输入地址',
+          componentName: 'x-input',
+          value: undefined
+        },
+      ]
+    )
+
     // 列配置部分
-    let columns = ref([]);
-    columns = [
+    let columns = ref([
       {
         prop: 'date',
         label: '日期',
@@ -44,11 +71,10 @@ export default defineComponent({
       {
         prop: 'address',
         label: '地址',
-        width: 180,
         type: 'defaultText',
         showOverflowTooltip: true,
       }
-    ]
+    ]);
     // 列表数据
     let tableData = ref([])
     tableData.value = [
@@ -73,6 +99,7 @@ export default defineComponent({
         address: 'No. 189, Grove St, Los Angeles',
       }
     ]
+    // 列表loading状态
     let loading = ref(false);
 
     // 添加一条数据
@@ -94,20 +121,30 @@ export default defineComponent({
     function selectionChanged(val) {
       multipleSelection.value = val
     }
+
     // 当用户手动勾选数据行的 Checkbox 时触发的事件
-    function select(selection, row){
+    function select(selection, row) {
       // selection:已选中的所有数据 row：当前选中行的数据
       console.log(selection, row)
     }
 
+    // 请求数据
+    function getData(param) {
+      console.log(param)
+      // const res = await apiService.demo.getCubes();
+      // console.log(res)
+    }
+
 
     return {
+      groups,
       columns,
       tableData,
       loading,
       addRow,
       selectionChanged,
-      select
+      select,
+      getData,
     }
   }
 

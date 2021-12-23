@@ -1,6 +1,14 @@
 <template>
   <div class="data-list">
-    <!--    表格-->
+    <!--筛选面板-->
+    <filter-panel
+      v-if="filterGroups.length>0"
+      :groups="filterGroups"
+      :auto="autoSearch"
+      @search="search"
+    />
+
+    <!--表格-->
     <el-table
       ref="dataList"
       :data="data"
@@ -8,11 +16,11 @@
       v-loading="loading"
       v-bind="attrs"
     >
-      <!--      列索引-->
+      <!--列索引-->
       <el-table-column v-if="showIndex" type="index" width="50"/>
-      <!--      多选列-->
+      <!--多选列-->
       <el-table-column v-if="selection" type="selection" width="55"/>
-      <!--      普通列-->
+      <!--普通列-->
       <el-table-column
         v-for="(col, index) in columns"
         :key="index"
@@ -21,12 +29,13 @@
         :show-overflow-tooltip="col.showOverflowTooltip"
       >
         <template #default="scope">
-          <!--          自定义列组件-->
+          <!--自定义列组件-->
           <component :is="col.type" :scope="scope" :col="col"></component>
         </template>
       </el-table-column>
     </el-table>
-    <!--    分页器-->
+
+    <!--分页器-->
     <div v-if="showPage" class="pagination" :style="{justifyContent:pagePosition}">
       <el-pagination
         v-model:currentPage="pageParam.displayStart"
@@ -41,15 +50,29 @@
 </template>
 
 <script>
-import {defineComponent, toRefs, ref, onUpdated, reactive} from "vue";
+import {defineComponent, toRefs, reactive, watch, ref, computed} from "vue";
 import customColumns from './columns/index';
+import filterPanel from "./filterPanel/filterPanel";
 
 export default defineComponent({
   name: "dataList",
   components: {
-    ...customColumns
+    ...customColumns,
+    filterPanel
   },
   props: {
+    // 筛选项目配置
+    filterGroups: {
+      type: Array,
+      default() {
+        return []
+      }
+    },
+    // 自动筛选（没有查询、重置按钮）
+    autoSearch: {
+      type: Boolean,
+      default: false
+    },
     // 列表数据
     data: {
       type: Array,
@@ -93,19 +116,55 @@ export default defineComponent({
     pagePosition: {
       type: String,
       default: 'right'
-    }
+    },
+
 
   },
   setup(props, context) {
-    const {data, columns, width, loading, selection, showIndex, pagePosition, showPage} = toRefs(props); // 读取组件参数
-    const {attrs} = context; // 读取额外参数
+    const {
+      data,
+      columns,
+      width,
+      loading,
+      selection,
+      showIndex,
+      pagePosition,
+      showPage,
+      filterGroups,
+      autoSearch
+    } = toRefs(props); // 读取组件参数
+    const {attrs, emit} = context; // 读取额外参数
+
+    // 筛选面板数据
+    let filterParam = {}
+
+    // 筛选面板查询方法
+    function search(value) {
+      Object.keys(value).forEach(key => {
+        filterParam[key] = value[key]
+      })
+      // 调用查询
+      generateSearchParam();
+    }
 
     // 分页信息处理
     let pageParam = reactive({displayStart: 1, displayLength: 10})
-    onUpdated(() => {
-      console.log('当前页：', pageParam.displayStart)
-      console.log('一页多少条：', pageParam.displayLength)
-    })
+    // 分页发生改变时，调用查询功能
+    watch(
+      () => pageParam,
+      (newValue) => {
+        generateSearchParam()
+      },
+      {
+        deep: true
+      }
+    )
+
+    // 组合查询参数 & 触发页面表格查询
+    function generateSearchParam() {
+      let searchParam = Object.assign({}, filterParam, pageParam)
+      emit('searchMethod', searchParam)
+    }
 
 
     return {
@@ -119,6 +178,9 @@ export default defineComponent({
       showPage, // 是否显示分页器
       pagePosition, // 分页器位置
       pageParam, // 分页参数
+      filterGroups, // 筛选项配置
+      autoSearch, // 是否开启自动查询（没有查询、重置按钮）
+      search, // 查询按钮回调方法
     }
   }
 })
