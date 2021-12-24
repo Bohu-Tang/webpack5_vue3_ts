@@ -11,14 +11,14 @@
       <!--      按钮-->
       <el-col :span="groups[0].span||6" v-if="!auto">
         <el-button type="primary" @click="search">查询</el-button>
-        <el-button type="primary" plain>重置</el-button>
+        <el-button type="primary" @click="reset" plain>重置</el-button>
       </el-col>
     </el-row>
   </el-card>
 
 </template>
 <script>
-import {defineComponent, reactive, toRefs, onBeforeMount} from "vue";
+import {defineComponent, ref, reactive, toRefs, onBeforeMount, unref} from "vue";
 import formComponents from "@/components/formComponents/index";
 
 export default defineComponent({
@@ -40,7 +40,7 @@ export default defineComponent({
     }
   },
   setup(props, context) {
-    const {groups, auto} = toRefs(props)
+    let {groups, auto} = toRefs(props)
     const {emit} = context
 
     // 表单项value发生改变时,修改groups内的数据
@@ -69,12 +69,25 @@ export default defineComponent({
       emit('search', data)
     })
 
+    // 重置
+    function reset() {
+      groups.value.forEach(item => {
+        if (typeof item.clearable === 'undefined' || item.clearable === true) {
+          item.value = undefined;
+        } else {
+          console.log(item.placeholder + '不可以重置')
+        }
+      })
+      search()
+    }
+
 
     return {
       groups, // 筛选项配置
       auto, // 是否开启自动筛选
       change, // 筛选项value发生改变了
       search, // 查询按钮事件
+      reset, // 重置方法
 
     }
   }

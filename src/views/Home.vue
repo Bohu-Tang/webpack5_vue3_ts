@@ -36,13 +36,14 @@ export default defineComponent({
         prop: 'name',
         placeholder: '请输入姓名',
         componentName: 'x-input',
-        value: '金针菇'
+        value: '金针菇',
+        clearable: false
       },
       {
         prop: 'sex',
         placeholder: '请输入性别',
         componentName: 'x-input',
-        value: undefined
+        value: undefined,
       },
       {
         prop: 'address',

@@ -8,7 +8,7 @@
   </div>
 </template>
 <script>
-import {defineComponent, ref, toRefs} from "vue";
+import {defineComponent, ref, toRefs, watch} from "vue";
 
 export default defineComponent({
   name: 'xInput',
@@ -23,15 +23,27 @@ export default defineComponent({
     }
   },
   setup(props, context) {
-    let {width} = toRefs(props); // 组件宽度
+    let {width, value: refValue} = toRefs(props);
     let {attrs, emit} = context // 读取额外参数和emit方法
-    let {value} = props // 读取value（这个value是非响应式的）
-    let inputValue = ref(value) // 定义自己的value用于双向绑定
+
+    // 定义自己的value用于双向绑定
+    let inputValue = ref('')
 
     // input事件
     function input() {
       emit('valueChange', inputValue.value)
     }
+
+    // 监听value变化,将传入的value反应在组件内部
+    watch(
+      refValue,
+      (newValue) => {
+        inputValue.value = newValue
+      },
+      {
+        immediate: true
+      }
+    )
 
     return {
       inputValue,
