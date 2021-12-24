@@ -6,7 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="e57bd324-7d6d-4f27-a407-31075c846462" name="变更" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/dataList/dataList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/dataList/dataList.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/dataList/filterPanel/filterPanel.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/dataList/filterPanel/filterPanel.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/Home.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Home.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,7 +57,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1640240923844</updated>
-      <workItem from="1640240926611" duration="21064000" />
+      <workItem from="1640240926611" duration="23144000" />
     </task>
     <servers />
   </component>

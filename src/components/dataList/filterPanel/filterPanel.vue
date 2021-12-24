@@ -1,5 +1,5 @@
 <template>
-  <el-card>
+  <el-card shadow="never">
     <el-row :gutter="20">
       <!--      筛选项-->
       <template v-for="(item, index) in groups" :key="index">
@@ -18,7 +18,7 @@
 
 </template>
 <script>
-import {defineComponent, ref, reactive, toRefs, onBeforeMount, unref} from "vue";
+import {defineComponent, toRefs, onBeforeMount} from "vue";
 import formComponents from "@/components/formComponents/index";
 
 export default defineComponent({

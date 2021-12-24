@@ -50,7 +50,7 @@
 </template>
 
 <script>
-import {defineComponent, toRefs, reactive, watch, ref, computed} from "vue";
+import {defineComponent, toRefs, reactive, watch} from "vue";
 import customColumns from './columns/index';
 import filterPanel from "./filterPanel/filterPanel";
 

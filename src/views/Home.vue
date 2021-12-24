@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import {defineComponent, ref, onMounted, reactive} from "vue";
+import {defineComponent, ref} from "vue";
 import dataList from "@/components/dataList/dataList";
 import apiService from "@/apiService";
 
