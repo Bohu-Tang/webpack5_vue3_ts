@@ -112,9 +112,10 @@ export default defineComponent({
       }, 1000)
     }
 
-    // 多选
+    // 多选的数据
     let multipleSelection = ref([])
 
+    // 多选数据发生变化时的回调
     function selectionChanged(val) {
       multipleSelection.value = val
     }

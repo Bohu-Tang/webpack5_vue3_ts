@@ -69,14 +69,13 @@ export default defineComponent({
       emit('search', data)
     })
 
+    // 获取原始值---用来给重置时赋值用
+    const originalValue = groups.value.map(item => item.value)
+
     // 重置
     function reset() {
-      groups.value.forEach(item => {
-        if (typeof item.clearable === 'undefined' || item.clearable === true) {
-          item.value = undefined;
-        } else {
-          console.log(item.placeholder + '不可以重置')
-        }
+      groups.value.forEach((item, index) => {
+        item.value = originalValue[index]
       })
       search()
     }
