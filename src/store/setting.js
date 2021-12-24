@@ -1,7 +1,3 @@
-interface stateType{
-  isCollapsed: boolean
-}
-
 const setting = {
   namespaced: true,
   state: () => {
@@ -10,7 +6,7 @@ const setting = {
     }
   },
   mutations: {
-    toggleCollapsed(state:stateType){
+    toggleCollapsed(state){
       state.isCollapsed=!state.isCollapsed;
     }
   }

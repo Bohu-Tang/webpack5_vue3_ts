@@ -4,11 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e57bd324-7d6d-4f27-a407-31075c846462" name="变更" comment="">
+    <list default="true" id="775daf9e-6221-4757-a992-b4b5f22f8e1e" name="变更" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/dataList/dataList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/dataList/dataList.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/dataList/filterPanel/filterPanel.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/dataList/filterPanel/filterPanel.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/webpack.common.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/webpack.common.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/svg-components.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/element/element-plus.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/router/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/setting.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/store.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/types/shims-vue.d.ts" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/Home.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Home.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,18 +26,10 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitSEFilterConfiguration">
-    <file-type-list>
-      <filtered-out-file-type name="LOCAL_BRANCH" />
-      <filtered-out-file-type name="REMOTE_BRANCH" />
-      <filtered-out-file-type name="TAG" />
-      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
-    </file-type-list>
-  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectId" id="22fuNOadxac9NJElmgoSexiH7k5" />
+  <component name="ProjectId" id="22iwEvebpysTgXooj1q9S9AkhJp" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -52,12 +52,12 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="默认任务">
-      <changelist id="e57bd324-7d6d-4f27-a407-31075c846462" name="变更" comment="" />
-      <created>1640240923844</created>
+      <changelist id="775daf9e-6221-4757-a992-b4b5f22f8e1e" name="变更" comment="" />
+      <created>1640333611603</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1640240923844</updated>
-      <workItem from="1640240926611" duration="23144000" />
+      <updated>1640333611603</updated>
+      <workItem from="1640333613379" duration="1755000" />
     </task>
     <servers />
   </component>

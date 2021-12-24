@@ -1,5 +1,3 @@
-import type {App} from 'vue'
-
 import {
   ElContainer,
   ElHeader,
@@ -106,7 +104,7 @@ const option = {
   size: 'small',
 }
 
-export default function introduceElement(app: App): void {
+export default function introduceElement(app) {
   components.forEach((component) => {
     app.use(component)
   })

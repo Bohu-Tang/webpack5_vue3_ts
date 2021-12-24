@@ -27,7 +27,7 @@ import dataList from "@/components/dataList/dataList";
 import apiService from "@/apiService";
 
 export default defineComponent({
-  name: 'home',
+  name: "home",
   components: {dataList},
   setup() {
     // 筛选面板配置

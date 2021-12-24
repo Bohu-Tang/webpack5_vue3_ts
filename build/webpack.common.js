@@ -15,7 +15,7 @@ const chalk = require("chalk");
 module.exports = {
   // 入口
   entry: {
-    app: resolve('src/index.ts')
+    app: resolve('src/index.js')
   },
   // 解析配置
   resolve: {
