@@ -18,7 +18,7 @@ import {
   Menu as IconMenu,
   Setting,
 } from '@element-plus/icons-vue'
-import { routes } from '../../router/index';
+import { routes } from '@/router/index';
 
 export default defineComponent({
   name: 'xMenu',

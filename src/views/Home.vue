@@ -21,15 +21,15 @@
   <el-button @click="addRow">点击加一条数据</el-button>
 </template>
 
-<script>
-import {defineComponent, ref} from "vue";
-import { useRouter, useRoute  } from "vue-router";
-import dataList from "@/components/dataList/dataList";
+<script lang="ts">
+import { defineComponent, ref } from "vue";
+import { useRouter, useRoute } from "vue-router";
+import dataList from "@/components/dataList/dataList.vue";
 import apiService from "@/apiService";
 
 export default defineComponent({
   name: "home",
-  components: {dataList},
+  components: { dataList },
   setup() {
     // 筛选面板配置
     let groups = ref([
@@ -122,18 +122,18 @@ export default defineComponent({
     let multipleSelection = ref([])
 
     // 多选数据发生变化时的回调
-    function selectionChanged(val) {
+    function selectionChanged(val: never[]): void {
       multipleSelection.value = val
     }
 
     // 当用户手动勾选数据行的 Checkbox 时触发的事件
-    function select(selection, row) {
+    function select(selection:never, row:Object) {
       // selection:已选中的所有数据 row：当前选中行的数据
       console.log(selection, row)
     }
 
     // 请求数据
-    function getData(param) {
+    function getData(param:Object) {
       console.log(param)
       // const res = await apiService.demo.getCubes();
       // console.log(res)
@@ -156,5 +156,4 @@ export default defineComponent({
 </script>
 
 <style scoped>
-
 </style>

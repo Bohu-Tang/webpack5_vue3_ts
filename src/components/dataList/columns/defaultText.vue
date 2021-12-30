@@ -3,7 +3,7 @@
     {{ scope.row[col.prop]}}
   </span>
 </template>
-<script>
+<script lang="ts">
 import {defineComponent, toRefs} from "vue";
 
 export default defineComponent({

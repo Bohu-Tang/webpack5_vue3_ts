@@ -1,5 +1,5 @@
 const files = require.context('./', false, /\.(js|ts)$/)
-const utils = {}
+const utils:any = {}
 
 files.keys().forEach((key) => {
   if (key.replace(/(\.\/|\.js)/g, '') !== 'index') {
