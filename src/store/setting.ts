@@ -1,3 +1,8 @@
+// state接口
+interface state {
+  isCollapsed: Boolean
+}
+
 const setting = {
   namespaced: true,
   state: () => {
@@ -6,8 +11,8 @@ const setting = {
     }
   },
   mutations: {
-    toggleCollapsed(state){
-      state.isCollapsed=!state.isCollapsed;
+    toggleCollapsed(state: state): void {
+      state.isCollapsed = !state.isCollapsed;
     }
   }
 }

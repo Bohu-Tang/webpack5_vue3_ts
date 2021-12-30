@@ -1,3 +1,6 @@
+// 导入app类型
+import type { App } from 'vue';
+
 import {
   ElContainer,
   ElHeader,
@@ -104,7 +107,7 @@ const option = {
   size: 'small',
 }
 
-export default function introduceElement(app) {
+export default function introduceElement(app:App):void {
   components.forEach((component) => {
     app.use(component)
   })

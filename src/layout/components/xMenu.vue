@@ -1,30 +1,24 @@
 <template>
-  <el-menu
-    class="el-menu-vertical"
-    default-active="/"
-    :collapse="isCollapsed"
-    :router="true"
-  >
+  <el-menu class="el-menu-vertical" default-active="/" :collapse="isCollapsed" :router="true">
     <el-menu-item v-for="item in routers" :index="item.path" :route="item" @click="menuItemClick">
       <el-icon>
-        <setting/>
+        <setting />
       </el-icon>
       <template #title>{{ item.meta.title }}</template>
     </el-menu-item>
-
   </el-menu>
 </template>
 
 <script lang="ts">
-import {defineComponent, ref, computed} from 'vue';
-import {useStore} from "vuex";
+import { defineComponent, ref, computed } from 'vue';
+import { useStore } from "vuex";
 import {
   Location,
   Document,
   Menu as IconMenu,
   Setting,
 } from '@element-plus/icons-vue'
-import {routes} from '@/router';
+import { routes } from '../../router/index';
 
 export default defineComponent({
   name: 'xMenu',

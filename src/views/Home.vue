@@ -23,6 +23,7 @@
 
 <script>
 import {defineComponent, ref} from "vue";
+import { useRouter, useRoute  } from "vue-router";
 import dataList from "@/components/dataList/dataList";
 import apiService from "@/apiService";
 
@@ -99,6 +100,9 @@ export default defineComponent({
     // 列表loading状态
     let loading = ref(false);
 
+    const router = useRouter();
+    const route = useRoute();
+
     // 添加一条数据
     function addRow() {
       loading.value = true;
@@ -110,6 +114,8 @@ export default defineComponent({
         })
         loading.value = false;
       }, 1000)
+      console.log(router);
+      console.log(route);
     }
 
     // 多选的数据
