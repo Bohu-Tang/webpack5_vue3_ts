@@ -5,18 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="775daf9e-6221-4757-a992-b4b5f22f8e1e" name="变更" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/webpack.common.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/webpack.common.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/svg-components.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/element/element-plus.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/router/index.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/setting.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/store.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/types/shims-vue.d.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/Home.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Home.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/dataList/columns/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/dataList/dataList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/dataList/dataList.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,6 +39,7 @@
     <property name="node.js.selected.package.stylelint" value="C:\Users\Admin\学习\2021\webpack5_vue3_ts\node_modules\stylelint" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="ts.external.directory.path" value="C:\Users\Admin\学习\2021\webpack5_vue3_ts\node_modules\typescript\lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
@@ -58,6 +51,10 @@
       <option name="presentableId" value="Default" />
       <updated>1640333611603</updated>
       <workItem from="1640333613379" duration="1755000" />
+      <workItem from="1641259129829" duration="916000" />
+      <workItem from="1641260660105" duration="40000" />
+      <workItem from="1641362467947" duration="595000" />
+      <workItem from="1641371920014" duration="2071000" />
     </task>
     <servers />
   </component>
