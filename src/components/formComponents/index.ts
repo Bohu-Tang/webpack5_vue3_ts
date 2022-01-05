@@ -1,5 +1,5 @@
 import {defineAsyncComponent} from "vue";
 
 export default {
-  xInput: defineAsyncComponent(() => import('./xInput'))
+  xInput: defineAsyncComponent(() => import('./xInput.vue'))
 }

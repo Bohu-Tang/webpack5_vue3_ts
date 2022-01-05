@@ -1,29 +1,33 @@
 <template>
-  <span class="default-text">
-    {{ scope.row[col.prop]}}
-  </span>
+  <span class="default-text">{{ scope.row[col.prop] }}</span>
 </template>
 <script lang="ts">
-import {defineComponent, toRefs} from "vue";
+import { defineComponent, toRefs } from "vue";
+
+interface Iprops {
+  scope: any,
+  col: any
+}
 
 export default defineComponent({
   name: 'defaultText',
-  props:{
-    scope:{
+  props: {
+    scope: {
       type: Object,
-      default(){
+      default() {
         return {}
       }
     },
-    col:{
+    col: {
       type: Object,
       default() {
         return {}
       }
     }
   },
-  setup(props){
-    const {scope, col} = toRefs(props)
+  setup(prop: Iprops) {
+    const { scope, col } = toRefs(prop)
+    
     return {
       scope,
       col

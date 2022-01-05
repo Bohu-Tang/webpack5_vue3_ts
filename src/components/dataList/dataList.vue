@@ -2,24 +2,18 @@
   <div class="data-list">
     <!--筛选面板-->
     <filter-panel
-      v-if="filterGroups.length>0"
+      v-if="filterGroups.length > 0"
       :groups="filterGroups"
       :auto="autoSearch"
       @search="search"
     />
 
     <!--表格-->
-    <el-table
-      ref="dataList"
-      :data="data"
-      :style="{width}"
-      v-loading="loading"
-      v-bind="attrs"
-    >
+    <el-table ref="dataList" :data="data" :style="{ width }" v-loading="loading" v-bind="attrs">
       <!--列索引-->
-      <el-table-column v-if="showIndex" type="index" width="50"/>
+      <el-table-column v-if="showIndex" type="index" width="50" />
       <!--多选列-->
-      <el-table-column v-if="selection" type="selection" width="55"/>
+      <el-table-column v-if="selection" type="selection" width="55" />
       <!--普通列-->
       <el-table-column
         v-for="(col, index) in columns"
@@ -36,23 +30,22 @@
     </el-table>
 
     <!--分页器-->
-    <div v-if="showPage" class="pagination" :style="{justifyContent:pagePosition}">
+    <div v-if="showPage" class="pagination" :style="{ justifyContent: pagePosition }">
       <el-pagination
         v-model:currentPage="pageParam.displayStart"
         v-model:page-size="pageParam.displayLength"
         :page-sizes="[10, 30, 50, 100]"
         layout="total, prev, pager, next, sizes, jumper"
         :total="400"
-      >
-      </el-pagination>
+      ></el-pagination>
     </div>
   </div>
 </template>
 
-<script>
-import {defineComponent, toRefs, reactive, watch} from "vue";
+<script lang="ts">
+import { defineComponent, toRefs, reactive, watch } from "vue";
 import customColumns from './columns/index';
-import filterPanel from "./filterPanel/filterPanel";
+import filterPanel from "./filterPanel/filterPanel.vue";
 
 export default defineComponent({
   name: "dataList",
@@ -120,7 +113,7 @@ export default defineComponent({
 
 
   },
-  setup(props, context) {
+  setup(props: any, context) {
     const {
       data,
       columns,
@@ -133,13 +126,13 @@ export default defineComponent({
       filterGroups,
       autoSearch
     } = toRefs(props); // 读取组件参数
-    const {attrs, emit} = context; // 读取额外参数
+    const { attrs, emit } = context; // 读取额外参数
 
     // 筛选面板数据
-    let filterParam = {}
+    let filterParam: any = {}
 
     // 筛选面板查询方法
-    function search(value) {
+    function search(value: any) {
       Object.keys(value).forEach(key => {
         filterParam[key] = value[key]
       })
@@ -156,7 +149,7 @@ export default defineComponent({
     }
 
     // 分页信息处理
-    let pageParam = reactive({displayStart: 1, displayLength: 10})
+    let pageParam = reactive({ displayStart: 1, displayLength: 10 })
     // 分页发生改变时，调用查询功能
     watch(
       () => pageParam,

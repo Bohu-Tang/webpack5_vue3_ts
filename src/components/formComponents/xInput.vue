@@ -7,7 +7,7 @@
     ></el-input>
   </div>
 </template>
-<script>
+<script lang="ts">
 import {defineComponent, ref, toRefs, watch} from "vue";
 
 export default defineComponent({
@@ -18,7 +18,7 @@ export default defineComponent({
       default: '100%'
     },
     value: {
-      type: [String, Number],
+      type: String,
       default: ''
     }
   },

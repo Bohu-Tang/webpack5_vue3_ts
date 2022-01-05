@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="775daf9e-6221-4757-a992-b4b5f22f8e1e" name="变更" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/dataList/columns/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/dataList/dataList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/dataList/dataList.vue" afterDir="false" />
-    </list>
+    <list default="true" id="775daf9e-6221-4757-a992-b4b5f22f8e1e" name="变更" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -54,7 +49,7 @@
       <workItem from="1641259129829" duration="916000" />
       <workItem from="1641260660105" duration="40000" />
       <workItem from="1641362467947" duration="595000" />
-      <workItem from="1641371920014" duration="2071000" />
+      <workItem from="1641371920014" duration="2834000" />
     </task>
     <servers />
   </component>

@@ -17,7 +17,7 @@
   </el-card>
 
 </template>
-<script>
+<script lang="ts">
 import {defineComponent, toRefs, onBeforeMount} from "vue";
 import formComponents from "@/components/formComponents/index";
 
@@ -39,20 +39,20 @@ export default defineComponent({
       default: false
     }
   },
-  setup(props, context) {
+  setup(props:any, context) {
     let {groups, auto} = toRefs(props)
     const {emit} = context
 
     // 表单项value发生改变时,修改groups内的数据
-    function change(groups, item, index, $event) {
+    function change(groups:any, item:any, index:any, $event:any) {
       groups[index].value = $event;
     }
 
     // 处理筛选项数据 --- 生成对象数据
-    let data = {}
+    let data:any = {}
 
     function generateData() {
-      groups.value.forEach(item => {
+      groups.value.forEach((item:any) => {
         data[item.prop] = item.value
       })
     }
@@ -70,11 +70,11 @@ export default defineComponent({
     })
 
     // 获取原始值---用来给重置时赋值用
-    const originalValue = groups.value.map(item => item.value)
+    const originalValue = groups.value.map((item:any) => item.value)
 
     // 重置
     function reset() {
-      groups.value.forEach((item, index) => {
+      groups.value.forEach((item:any, index:number) => {
         item.value = originalValue[index]
       })
       search()

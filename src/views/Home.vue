@@ -127,9 +127,9 @@ export default defineComponent({
     }
 
     // 当用户手动勾选数据行的 Checkbox 时触发的事件
-    function select(selection:never, row:Object) {
+    function select(selection:Event) {
       // selection:已选中的所有数据 row：当前选中行的数据
-      console.log(selection, row)
+      console.log(selection)
     }
 
     // 请求数据

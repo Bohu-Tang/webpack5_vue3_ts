@@ -4,7 +4,7 @@
   </el-config-provider>
 </template>
 
-<script>
+<script lang="ts">
 import {defineComponent} from "vue";
 import baseLayout from '@/layout/baseLayout.vue';
 // 引入中文语言包
