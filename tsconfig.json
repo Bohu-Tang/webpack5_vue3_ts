@@ -16,7 +16,8 @@
         // 用于设置模块名称到基于baseUrl的路径映射
         "@/*": ["src/*"]
       },
-      "lib": ["esnext", "dom", "dom.iterable", "scripthost"] // lib用于指定要包含在编译中的库文件
+      "lib": ["esnext", "dom", "dom.iterable", "scripthost"], // lib用于指定要包含在编译中的库文件
+      "suppressImplicitAnyIndexErrors": true
     },
     "include": [
       "src/**/*.ts",

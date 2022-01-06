@@ -62,6 +62,17 @@ export default defineComponent({
         type: 'defaultText'
       },
       {
+        prop: 'date',
+        label: '图标',
+        width: 180,
+        icon: 'TrendCharts',
+        type: 'icon',
+        size: '30px',
+        showIcon:(row:any)=>{
+          return row.date==='2016-05-03'
+        }
+      },
+      {
         prop: 'name',
         label: '姓名',
         width: 180,
