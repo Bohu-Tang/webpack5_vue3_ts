@@ -1,5 +1,6 @@
 <template>
     <div class="icon">
+        {{ text }}
         <el-icon
             v-show="col.showIcon(scope.row)"
             :style="{ width: size || '20px', height: size || '20px' }"
@@ -10,11 +11,13 @@
 </template>
 <script lang="ts" >
 import { defineComponent, toRefs, PropType } from "vue";
-interface col {
-    label: string,
-    prop: string,
-    type: string,
-    [propName: string]: any
+import { Icol } from './colInterface'
+
+interface col extends Icol {
+    icon: string, // 图标名称
+    size?: string, // 图标大小
+    text?: string | number, // 图标前的文字
+    showIcon(): boolean // 是否展示图标
 }
 
 export default defineComponent({
@@ -29,12 +32,16 @@ export default defineComponent({
     },
     setup(prop: any) {
         const { col, scope } = toRefs(prop)
-        const { icon, size } = col.value
+        const { icon, size, text } = col.value
+        console.log(scope);
+
+
         return {
             icon,
             col,
             scope,
-            size
+            size,
+            text
         }
     }
 })
