@@ -1,5 +1,10 @@
 <template>
-  <el-menu class="el-menu-vertical" default-active="/" :collapse="isCollapsed" :router="true">
+  <el-menu
+    class="el-menu-vertical"
+    :default-active="activeRoute"
+    :collapse="isCollapsed"
+    :router="true"
+  >
     <el-menu-item v-for="item in routers" :index="item.path" :route="item" @click="menuItemClick">
       <el-icon>
         <setting />
@@ -10,7 +15,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, computed } from 'vue';
+import { defineComponent, ref, computed, onMounted } from 'vue';
 import { useStore } from "vuex";
 import {
   Location,
@@ -30,7 +35,14 @@ export default defineComponent({
   },
   setup() {
     // 获取所有路由
-    const routers = ref(routes)
+    const routers: any = ref(routes)
+
+    let activeRoute = ref<string>('/')
+    onMounted(() => {
+      let currentRoute = window.location.pathname
+      activeRoute.value = currentRoute;
+    })
+
 
     // 菜单点击事件
     const menuItemClick = (item: any) => {
@@ -43,7 +55,8 @@ export default defineComponent({
     return {
       isCollapsed,
       routers,
-      menuItemClick
+      menuItemClick,
+      activeRoute
     }
   },
 })
