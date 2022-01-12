@@ -1,13 +1,17 @@
-const {merge} = require("webpack-merge");
+const {
+  merge
+} = require("webpack-merge");
 const webpack = require("webpack");
 const common = require("./webpack.common");
-const {resolve} = require('./utils.js');
+const {
+  resolve
+} = require('./utils.js');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 
 
 const devWebpackConfig = merge(common, {
-  mode: 'development',// 打包模式-开发模式
-  devtool: "eval-cheap-module-source-map",// 开启sourcemap
+  mode: 'development', // 打包模式-开发模式
+  devtool: "eval-cheap-module-source-map", // 开启sourcemap
   module: {
     rules: [
       // 样式loader vue-style-loader | postcss-loader | sass-loader
@@ -45,32 +49,31 @@ const devWebpackConfig = merge(common, {
     ]
   },
   output: {
-    path: resolve("dist"),// 输出目录
-    filename: "js/[name].[hash].js",// 输出文件名
+    path: resolve("dist"), // 输出目录
+    filename: "js/[name].[hash].js", // 输出文件名
     chunkFilename: "js/[name].[hash].js", // 分包文件名
     publicPath: "/" // 公共资源目录
   },
-  stats: "errors-warnings",// 日志只打印错误和警告
+  stats: "errors-warnings", // 日志只打印错误和警告
   // 开发环境服务器配置
   devServer: {
     host: "127.0.0.1",
-    historyApiFallback: {//history模式路由兼容
-      rewrites: [
-        {
-          from: /.*/g,
-          to: "index.html"
-        }
-      ]
-    },
-    allowedHosts: 'all',// 允许所有域名请求
+    // historyApiFallback: { //history模式路由兼容
+    //   rewrites: [{
+    //     from: /.*/g,
+    //     to: "index.html"
+    //   }]
+    // },
+    historyApiFallback: true,
+    allowedHosts: 'all', // 允许所有域名请求
     port: 3000, // 服务器端口
     open: false, // 自动打开浏览器
     hot: true, // 是否开启热更新（不配置此项其实也是默认开启的）
     client: {
-      progress: false,// 将运行进度显示到控制台
+      progress: false, // 将运行进度显示到控制台
       overlay: {
-        warnings: false,// 警告时不需要全屏显示错误
-        errors: true// 发生错误时全屏显示错误
+        warnings: false, // 警告时不需要全屏显示错误
+        errors: true // 发生错误时全屏显示错误
       },
     },
     compress: true, // 为所有服务启用gzip压缩
@@ -87,7 +90,7 @@ const devWebpackConfig = merge(common, {
   },
   plugins: [
     new webpack.DefinePlugin({
-      "process.env":{
+      "process.env": {
         NODE_ENV: JSON.stringify("development")
       },
       __VUE_OPTIONS_API__: true,
