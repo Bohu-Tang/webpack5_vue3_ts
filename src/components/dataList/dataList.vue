@@ -24,7 +24,7 @@
       >
         <template #default="scope">
           <!--自定义列组件-->
-          <component :is="col.type" :scope="scope" :col="col"></component>
+          <component :is="customColumns[col.type]" :scope="scope" :col="col"></component>
         </template>
       </el-table-column>
     </el-table>
@@ -42,149 +42,95 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, toRefs, reactive, watch } from "vue";
+<script lang="ts" setup>
+import { defineEmits, toRefs, reactive, watch, defineProps, withDefaults, useAttrs } from "vue";
 import customColumns from './columns/index';
 import filterPanel from "./filterPanel/filterPanel.vue";
 
-export default defineComponent({
-  name: "dataList",
-  components: {
-    ...customColumns,
-    filterPanel
-  },
-  props: {
-    // 筛选项目配置
-    filterGroups: {
-      type: Array,
-      default() {
-        return []
-      }
-    },
-    // 自动筛选（没有查询、重置按钮）
-    autoSearch: {
-      type: Boolean,
-      default: false
-    },
-    // 列表数据
-    data: {
-      type: Array,
-      default() {
-        return []
-      }
-    },
-    // 列配置
-    columns: {
-      type: Array,
-      default() {
-        return []
-      }
-    },
-    // 表格宽度
-    width: {
-      type: String,
-      default: '100%'
-    },
-    // 列表加载状态
-    loading: {
-      type: Boolean,
-      default: false
-    },
-    // 是否启用多选
-    selection: {
-      type: Boolean,
-      default: false
-    },
-    // 是否显示索引列
-    showIndex: {
-      type: Boolean,
-      default: false
-    },
-    // 是否显示分页器
-    showPage: {
-      type: Boolean,
-      default: true
-    },
-    // 分页器位置
-    pagePosition: {
-      type: String,
-      default: 'right'
-    },
+interface Iprops {
+  filterGroups: any,// 筛选项目配置
+  autoSearch: boolean, //自动筛选（没有查询、重置按钮）
+  data: any, // 列表数据
+  columns: any, // 列配置
+  width: string, // 表格宽度
+  loading: boolean, // 列表加载状态
+  selection: boolean, // 是否启用多选
+  showIndex: boolean, // 是否显示索引列
+  showPage: boolean, // 是否显示分页器
+  pagePosition: string, // 分页器位置
+}
 
-
-  },
-  setup(props: any, context) {
-    const {
-      data,
-      columns,
-      width,
-      loading,
-      selection,
-      showIndex,
-      pagePosition,
-      showPage,
-      filterGroups,
-      autoSearch
-    } = toRefs(props); // 读取组件参数
-    const { attrs, emit } = context; // 读取额外参数
-
-    // 筛选面板数据
-    let filterParam: any = {}
-
-    // 筛选面板查询方法
-    function search(value: any) {
-      Object.keys(value).forEach(key => {
-        filterParam[key] = value[key]
-      })
-      // 调用查询
-      if (pageParam.displayStart === 1) {
-        // 当页码在第一页的时候直接调用查询方法
-        generateSearchParam();
-      } else {
-        // 当页码不在第一页的时候，将页码改为第一页
-        // watch将自动调用查询方法
-        pageParam.displayStart = 1
-      }
-
-    }
-
-    // 分页信息处理
-    let pageParam = reactive({ displayStart: 1, displayLength: 10 })
-    // 分页发生改变时，调用查询功能
-    watch(
-      () => pageParam,
-      (newValue) => {
-        generateSearchParam()
-      },
-      {
-        deep: true
-      }
-    )
-
-    // 组合查询参数 & 触发页面表格查询
-    function generateSearchParam() {
-      let searchParam = Object.assign({}, filterParam, pageParam)
-      emit('searchMethod', searchParam)
-    }
-
-
-    return {
-      attrs, // 额外参数(props中没定义的属性参数)
-      columns, // 列配置
-      data, // 列表数据
-      width, // 列表宽度
-      loading, // 列表加载状态
-      selection, // 是否启用多选功能
-      showIndex, // 是否显示索引列
-      showPage, // 是否显示分页器
-      pagePosition, // 分页器位置
-      pageParam, // 分页参数
-      filterGroups, // 筛选项配置
-      autoSearch, // 是否开启自动查询（没有查询、重置按钮）
-      search, // 查询按钮回调方法
-    }
-  }
+const props = withDefaults(defineProps<Iprops>(), {
+  filterGroups: [],// 筛选项目配置
+  autoSearch: false, //自动筛选（没有查询、重置按钮）
+  data: [], // 列表数据
+  columns: [], // 列配置
+  width: '100%', // 表格宽度
+  loading: false, // 列表加载状态
+  selection: false, // 是否启用多选
+  showIndex: false, // 是否显示索引列
+  showPage: true, // 是否显示分页器
+  pagePosition: 'right', // 分页器位置
 })
+const attrs = useAttrs();
+
+ // 读取组件参数
+const {
+  data,
+  columns,
+  width,
+  loading,
+  selection,
+  showIndex,
+  pagePosition,
+  showPage,
+  filterGroups,
+  autoSearch
+} = toRefs(props);
+
+const emit = defineEmits<{
+  (event: 'searchMethod', searchParam: any): void
+}>()
+
+// 筛选面板数据
+let filterParam: any = {}
+
+// 筛选面板查询方法
+function search(value: any) {
+  Object.keys(value).forEach(key => {
+    filterParam[key] = value[key]
+  })
+  // 调用查询
+  if (pageParam.displayStart === 1) {
+    // 当页码在第一页的时候直接调用查询方法
+    generateSearchParam();
+  } else {
+    // 当页码不在第一页的时候，将页码改为第一页
+    // watch将自动调用查询方法
+    pageParam.displayStart = 1
+  }
+
+}
+
+// 分页信息处理
+let pageParam = reactive({ displayStart: 1, displayLength: 10 })
+// 分页发生改变时，调用查询功能
+watch(
+  () => pageParam,
+  (newValue) => {
+    generateSearchParam()
+  },
+  {
+    deep: true
+  }
+)
+
+// 组合查询参数 & 触发页面表格查询
+function generateSearchParam() {
+  let searchParam = Object.assign({}, filterParam, pageParam)
+  emit('searchMethod', searchParam)
+}
+
 </script>
 <style>
 .pagination {
