@@ -10,8 +10,6 @@ import baseLayout from '@/layout/baseLayout.vue';
 // 引入中文语言包
 import zhCn from 'element-plus/lib/locale/lang/zh-cn';
 
-console.log('你好');
-
 export default defineComponent({
   name: 'App',
   components: {
