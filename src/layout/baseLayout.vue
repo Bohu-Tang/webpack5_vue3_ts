@@ -13,19 +13,9 @@
     </el-container>
   </el-container>
 </template>
-<script lang="ts">
-import {defineComponent} from "vue";
+<script lang="ts" setup>
 import xMenu from '@/layout/components/xMenu.vue';
 import xHeader from "@/layout/components/xHeader.vue"
-
-export default defineComponent({
-  name: 'baseLayout',
-  components:{
-    xMenu,
-    xHeader
-  }
-
-})
 </script>
 <style lang="scss" scoped>
 .el-container,el-aside{

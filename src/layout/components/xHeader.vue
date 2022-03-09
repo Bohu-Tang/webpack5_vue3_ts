@@ -3,38 +3,30 @@
     <div class="collapse-container">
       <!--      展开-->
       <el-icon @click="toggleCollapse" v-show="isCollapsed">
-        <expand/>
+        <expand />
       </el-icon>
       <!--      收起-->
       <el-icon @click="toggleCollapse" v-show="!isCollapsed">
-        <fold/>
+        <fold />
       </el-icon>
     </div>
   </div>
-
 </template>
 
 <script lang="ts" setup>
-import {defineComponent, computed} from "vue";
-import {Expand, Fold} from "@element-plus/icons-vue";
-import {useStore} from "vuex";
+import { computed } from "vue";
+import { Expand, Fold } from "@element-plus/icons-vue";
+import { useStore } from "vuex";
 
 const store = useStore();
 
-function toggleCollapse():void {
+function toggleCollapse(): void {
   store.commit('setting/toggleCollapsed')
 }
 
-let isCollapsed= computed(()=> store.state.setting.isCollapsed)
+let isCollapsed = computed(() => store.state.setting.isCollapsed)
 
 
-defineComponent({
-  name: "xHeader",
-  components: {
-    Expand,
-    Fold
-  }
-})
 </script>
 
 <style lang="scss" scoped>
@@ -59,5 +51,4 @@ defineComponent({
     }
   }
 }
-
 </style>

@@ -72,6 +72,7 @@ const props = withDefaults(defineProps<Iprops>(), {
   showPage: true, // 是否显示分页器
   pagePosition: 'right', // 分页器位置
 })
+// 读取其他剩余参数
 const attrs = useAttrs();
 
  // 读取组件参数

@@ -14,52 +14,32 @@
   </el-menu>
 </template>
 
-<script lang="ts">
-import { defineComponent, ref, computed, onMounted } from 'vue';
+<script lang="ts" setup>
+import { ref, computed, onMounted } from 'vue';
 import { useStore } from "vuex";
 import {
-  Location,
-  Document,
-  Menu as IconMenu,
   Setting,
 } from '@element-plus/icons-vue'
 import { routes } from '@/router/index';
 
-export default defineComponent({
-  name: 'xMenu',
-  components: {
-    Location,
-    Document,
-    Setting,
-    IconMenu,
-  },
-  setup() {
-    // 获取所有路由
-    const routers: any = ref(routes)
+const routers: any = ref(routes)
 
-    let activeRoute = ref<string>('/')
-    onMounted(() => {
-      let currentRoute = window.location.pathname
-      activeRoute.value = currentRoute;
-    })
-
-
-    // 菜单点击事件
-    const menuItemClick = (item: any) => {
-      console.log(item)
-    }
-    // 侧边栏展开收起
-    const store = useStore();
-    const isCollapsed = computed(() => store.state.setting.isCollapsed)
-
-    return {
-      isCollapsed,
-      routers,
-      menuItemClick,
-      activeRoute
-    }
-  },
+let activeRoute = ref<string>('/')
+onMounted(() => {
+  let currentRoute = window.location.pathname
+  activeRoute.value = currentRoute;
 })
+
+
+// 菜单点击事件
+const menuItemClick = (item: any) => {
+  console.log(item)
+}
+// 侧边栏展开收起
+const store = useStore();
+const isCollapsed = computed(() => store.state.setting.isCollapsed)
+
+
 </script>
 
 <style lang="scss">

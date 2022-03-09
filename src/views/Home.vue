@@ -32,20 +32,20 @@ let groups = ref([
   {
     prop: 'name',
     placeholder: '请输入姓名',
-    componentName: 'x-input',
+    componentName: 'xInput',
     value: '金针菇',
     clearable: false
   },
   {
     prop: 'sex',
     placeholder: '请输入性别',
-    componentName: 'x-input',
+    componentName: 'xInput',
     value: undefined,
   },
   {
     prop: 'address',
     placeholder: '请输入地址',
-    componentName: 'x-input',
+    componentName: 'xInput',
     value: undefined
   },
 ])
@@ -64,7 +64,7 @@ let columns = ref([
     icon: 'TrendCharts',
     type: 'icon',
     size: '30px',
-    showIcon: (row: any) => {
+    showIcon: (row:any) => {
       return row.date === '2016-05-03'
     }
   },

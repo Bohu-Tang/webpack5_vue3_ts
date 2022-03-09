@@ -1,5 +1,5 @@
 // 列接口 -- 通用属性接口
-interface Icol {
+interface ICol {
     prop: string, // 列绑定的字段
     label: string, // 列名
     type: string, // 列组件类型
@@ -7,4 +7,4 @@ interface Icol {
     width?: string | number // 列宽
 }
 
-export  {Icol}
+export  {ICol}
